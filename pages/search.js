@@ -3,14 +3,12 @@ import Footer from '../components/Footer'
 import { useRouter } from 'next/router'
 import { format } from 'date-fns'
 import InfoCard from '../components/InfoCard'
+import Map from '../components/Map'
 
 const Search = ({ searchResults }) => {
   const router = useRouter()
 
-  console.log(searchResults)
-
   const { location, startDate, endDate, guestNumber } = router.query
-  console.log(startDate)
 
   const formattedStartDate = format(new Date(startDate), 'dd MMMM yy')
   const formattedEndDate = format(new Date(endDate), 'dd MMMM yy')
@@ -53,6 +51,10 @@ const Search = ({ searchResults }) => {
               )
             )}
           </div>
+        </section>
+
+        <section className='hidden xl:inline-flex xl:min-w-[600px]'>
+          <Map searchResults={searchResults} />
         </section>
       </main>
       <Footer />
